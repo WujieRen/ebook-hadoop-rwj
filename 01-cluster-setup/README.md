@@ -13,13 +13,15 @@
 
 点击[下载]()相应版本，本文档采用2.7.7。安装Hadoop集群需要解压所软件在所有的节点上，所以将硬件的功能进行划分很重要。
 
+<h2 id="cp">Component Planning</h2>
+
 建议将NameNode和ResourceManager指定分开在两台节点上，这样即使某台节点挂了也不至于导致NameNode和ResoureManager同时挂掉。其余的节点则同时充当DataNode和NodeManager。
 
-| n1（n1.com.rwj）  | n2（n2.com.rwj） | n3（n3.com.rwj）            |
-| :---------------- | :--------------- | :-------------------------- |
-| NameNode/DataNode | DataNode         | DataNode                    |
-| NodeManager       | NodeManager      | ResourceManager/NodeManager |
-| SecondaryNameNode | HistoryServer    |                             |
+|        n1         |      n2       |             n3              |
+| :---------------: | :-----------: | :-------------------------: |
+| NameNode/DataNode |   DataNode    |          DataNode           |
+|    NodeManager    |  NodeManager  | ResourceManager/NodeManager |
+| SecondaryNameNode | HistoryServer |                             |
 
 ## Configure Hadoop
 
@@ -44,12 +46,12 @@ YARN守护程序是ResourceManager，NodeManager和WebAppProxy。如果要使用
 ```xml
 <property>
 	<name>fs.defaultFS</name>
-	<value>hdfs://n1.com.rwj:8020</value>
+	<value>hdfs://n1:8020</value>
 </property>
 <!-- haddop.tmp.dir默认值为/tmp。而/tmp中的不常用文件可能会被Linux删除。 -->
 <property>
 	<name>hadoop.tmp.dir</name>
-	<value>/opt/app/hadoop-2.7.0/data/tmp</value>
+	<value>/opt/cluster/hadoop-2.7.7/data/tmp</value>
 </property>
 ```
 
@@ -84,7 +86,7 @@ YARN守护程序是ResourceManager，NodeManager和WebAppProxy。如果要使用
 ```xml
 <property>
 	<name>yarn.resourcemanager.hostname</name>
-	<value>n3.com.rwj</value>
+	<value>n3</value>
 </property>
 <!-- RM Web UI的默认值就是8088 -->
 <property>
@@ -125,7 +127,7 @@ YARN守护程序是ResourceManager，NodeManager和WebAppProxy。如果要使用
 ```xml
 <property>
 	<name>dfs.namenode.secondary.http-address</name>
-	<value>n1.com.rwj:50090</value>
+	<value>n1:50090</value>
 </property>
 ```
 
@@ -136,11 +138,11 @@ YARN守护程序是ResourceManager，NodeManager和WebAppProxy。如果要使用
 ```xml
 <property>
     <name>mapreduce.jobhistory.address</name>
-    <value>n2.com.rwj:10020</value>
+    <value>n2:10020</value>
 </property>
 <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value>n2.com.rwj:19888</value>
+    <value>n2:19888</value>
 </property>
 ```
 
@@ -165,9 +167,9 @@ YARN守护程序是ResourceManager，NodeManager和WebAppProxy。如果要使用
 slaves文件用于指定DataNode和NodeManager所在节点，每行一个。
 
 ```
-n1.com.rwj
-n2.com.rwj
-n3.com.rwj
+n1
+n2
+n3
 ```
 
 ## Operating the Hadoop Cluster
@@ -186,12 +188,16 @@ scp -r $HADOOP_HOME root@n3.com.rwj:/opt/
 首次启动HDFS时，需要将其格式化。在NameNode机器所在节点上执行：
 
 ```shell
-$ HADOOP_HOME / bin / hdfs namenode -format 
+$ HADOOP_HOME/bin/hdfs namenode -format 
 ```
 
 ### 启动/关闭集群
 
-以下所有命令是启动命令，如果是关闭，将start替换为stop即可
+以下所有命令是启动命令，如果是关闭，将start替换为stop即可。启动时一边启动一边用命令jps查看相应进程是否启动成功。
+
+> **[info]注意**
+>
+> 以下命令单独启动某进程时，必需要在相应的节点上进行该命令的操作。
 
 启动HDFS：
 
@@ -213,11 +219,23 @@ $HADOOP_HOME/sbin/yarn-daemon.sh start nodemanager
 $HADOOP_HOME/sbin/start-yarn.sh
 ```
 
+启动SecondaryNamenode
+
+```shell
+$HADOOP_HOME/sbin hadoop-daemon.sh start secondarynamenode
+```
+
 启动HistoryServer
 
 ```shell
 $HADOOP_HOME/bin/mapred --daemon start historyserver
+#或者
+$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 ```
+
+最终，对应于开始的组件规划（[Component Planning](#cp)）；每台节点上都应该看到相应的进程启动并稳定运行。
+
+![](../images/01/01.jpg)
 
 ## Web Interface
 
