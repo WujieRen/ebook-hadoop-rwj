@@ -241,11 +241,11 @@ $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 
 成功启动集群后即可查看对应组件的Web UI是否可以正常访问。
 
-| Daemon               | Web Interface            | Notes     |
-| -------------------- | ------------------------ | --------- |
-| NameNode             | https://n1.com.rwj:50070 | 默认50070 |
-| ResourceManager      | https://n1.com.rwj:8088  | 默认8088  |
-| MapReduce JobHistory | https://n1.com.rwj:19888 | 默认19888 |
+| Daemon               | Web Interface    | Notes     |
+| -------------------- | ---------------- | --------- |
+| NameNode             | https://n1:50070 | 默认50070 |
+| ResourceManager      | https://n3:8088  | 默认8088  |
+| MapReduce JobHistory | https://n2:19888 | 默认19888 |
 
 
 
