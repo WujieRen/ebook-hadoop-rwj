@@ -1,4 +1,4 @@
-# 集群安装
+# 部署完全分布式Hadoop集群
 
 
 ## Purpose
@@ -15,7 +15,7 @@
 
 <h2 id="cp">Component Planning</h2>
 
-建议将NameNode和ResourceManager指定分开在两台节点上，这样即使某台节点挂了也不至于导致NameNode和ResoureManager同时挂掉。其余的节点则同时充当DataNode和NodeManager。
+建议将NameNode和ResourceManager指定分开在两台节点上，这样即使某台节点挂了也不至于导致NameNode和ResoureManager同时挂掉。其余的节点则同时充当DataNode和NodeManager。通常建议将DataNode和ResourceManager安装在同一台节点上。
 
 |        n1         |      n2       |             n3              |
 | :---------------: | :-----------: | :-------------------------: |
@@ -235,7 +235,7 @@ $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 
 最终，对应于开始的组件规划（[Component Planning](#cp)）；每台节点上都应该看到相应的进程启动并稳定运行。
 
-![](../images/01/01.jpg)
+![](F:%5Cgit%5Cebook%5Cebook_src%5CHadoop%5Cimages%5C01%5C01.jpg)
 
 ## Web Interface
 
@@ -247,8 +247,18 @@ $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 | ResourceManager      | https://n3:8088  | 默认8088  |
 | MapReduce JobHistory | https://n2:19888 | 默认19888 |
 
+## 补充
 
+#### Hadoop的配置文件
 
+1. 每个模块对应一个配置文件，主要分两种：默认配置文件和自定义配置文件。
 
+   | 模块      | 默认配置文件       | 自定义配置文件  |
+   | :-------- | :----------------- | :-------------- |
+   | Core      | core-default.xml   | core-site.xml   |
+   | HDFS      | hdfs-default.xml   | hdfs-site.xml   |
+   | YARN      | yarn-default.xml   | yarn-site.xml   |
+   | MapReduce | mapred-default.xml | mapred-site.xml |
 
+2. 配置文件的优先级：Hadoop的守护进程在启动的时候会首先去读取默认配置文件，再去读取自定义配置文件。自定义配置文件的属性会覆盖掉默认配置文件。
 
