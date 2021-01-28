@@ -126,7 +126,7 @@ public class WcDemo1 {
 
 - [优化一](./01-wc-optimization/README.md)
 
-另外，以上只是以两行很少的单次作为输入文件举例。如果输入文件过大的话，在Map -> Reduce过程中的shuffle过程传输的数据量也会非常大，这种情况下就会占用大量的网络带宽。这时候我们可以通过用Map端的Combine（合并）来让Map端提前做一点合并，承担一点Reduce端的工作。优化方式见：
+另外，以上只是以两行很少的单词作为输入文件举例。如果输入文件过大的话，在Map -> Reduce过程中的shuffle过程传输的数据量也会非常大，这种情况下就会占用大量的网络带宽。这时候我们可以通过用Map端的Combine（合并）来让Map端提前做一点合并，承担一点Reduce端的工作。优化方式见：
 
-- [自定义Map端Combine规则](./02-wc-custom-combine/READ.md)
+- [自定义Map端Combine规则](./02-wc-custom-combine/README.md)
 
