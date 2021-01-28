@@ -1,0 +1,682 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>03-wd-count · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="01-wc-optimization/" />
+    
+    
+    <link rel="prev" href="../02-mr-model/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../01-enviroment/">
+            
+                <a href="../../01-enviroment/">
+            
+                    
+                    01-enviroment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../01-enviroment/01-cluster-setup.html">
+            
+                <a href="../../01-enviroment/01-cluster-setup.html">
+            
+                    
+                    01-cluster-setup.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../01-enviroment/02-cluster-ha.html">
+            
+                <a href="../../01-enviroment/02-cluster-ha.html">
+            
+                    
+                    02-cluster-ha.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../02-basic-operate/">
+            
+                <a href="../../02-basic-operate/">
+            
+                    
+                    02-basic-operate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    03-code-demo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../01-dev-env/">
+            
+                <a href="../01-dev-env/">
+            
+                    
+                    01-dev-env
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../02-mr-model/">
+            
+                <a href="../02-mr-model/">
+            
+                    
+                    02-mr-model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    03-wd-count
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="01-wc-optimization/">
+            
+                <a href="01-wc-optimization/">
+            
+                    
+                    01-wc-optimization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="02-wc-custom-combine/">
+            
+                <a href="02-wc-custom-combine/">
+            
+                    
+                    02-wc-custom-combine
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../04-second-sort/">
+            
+                <a href="../04-second-sort/">
+            
+                    
+                    04-second-sort
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../04-second-sort/01-demo1/">
+            
+                <a href="../04-second-sort/01-demo1/">
+            
+                    
+                    01-demo1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../04-second-sort/02-demo2/">
+            
+                <a href="../04-second-sort/02-demo2/">
+            
+                    
+                    02-demo2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../04-second-sort/03-demo3/">
+            
+                <a href="../04-second-sort/03-demo3/">
+            
+                    
+                    03-demo3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../05-join/">
+            
+                <a href="../05-join/">
+            
+                    
+                    05-join
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../06-custom-counter/">
+            
+                <a href="../06-custom-counter/">
+            
+                    
+                    06-custom-counter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../04-architec/">
+            
+                <a href="../../04-architec/">
+            
+                    
+                    04-architec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../05-src-code/">
+            
+                <a href="../../05-src-code/">
+            
+                    
+                    05-src-code
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../05-src-code/01-build/">
+            
+                <a href="../../05-src-code/01-build/">
+            
+                    
+                    01-build
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >03-wd-count</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#wordcount&#x6848;&#x4F8B;"><b>1. </b>WordCount&#x6848;&#x4F8B;</a></li></ul></div><a href="#wordcount&#x6848;&#x4F8B;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="wordcount&#x6848;&#x4F8B;"><a name="wordcount&#x6848;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#wordcount&#x6848;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>1. WordCount&#x6848;&#x4F8B;</h1>
+<p>WordCount&#x7684;&#x6D41;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;&#x9488;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6309;&#x7167;&#x6307;&#x5B9A;&#x7684;&#x5206;&#x9694;&#x7B26;&#x5C06;&#x5B57;&#x6BB5;&#x5206;&#x5272;&#xFF0C;&#x5E76;&#x5F62;&#x6210;<key, value="">&#x5F62;&#x5F0F;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x3002;Map&#x90E8;&#x5206;&#x6BCF;&#x8BFB;&#x53D6;&#x4E00;&#x884C;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5206;&#x7EC4;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4EA4;&#x7ED9;Reduce&#x5904;&#x7406;&#x3002;</key,></p>
+<p>&#x6BD4;&#x5982;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-txt">hadoop hive hive 
+scala spark hadoop
+</code></pre>
+<p>&#x90A3;MapReduce&#x7A0B;&#x5E8F;Map&#x7AEF;&#x5B9E;&#x73B0;&#xFF1A;&#x5C06;&#x6587;&#x5B57;&#x5206;&#x5272;&#xFF0C;&#x7136;&#x540E;&#x5F62;&#x6210;<word, 1="">&#x683C;&#x5F0F;&#x7684;<key,value>&#x5BF9;&#x3002;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&#x4EE5;&#x4E0A;&#x6587;&#x4EF6;&#x5206;&#x5272;&#x540E;&#x5F62;&#x6210;&#xFF1A;</key,value></word,></p>
+<pre><code class="lang-txt">&lt;hadoop,1&gt;
+&lt;hive,1&gt;
+&lt;hive,1&gt;
+&lt;scala,1&gt;
+&lt;spark,1&gt;
+&lt;hadoop,1&gt;
+</code></pre>
+<p>&#x7136;&#x540E;Reduce&#x7AEF;&#x63A5;&#x6536;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x6309;&#x7167;&#x4E0A;&#x8FF0;<key,value>&#x7684;key&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3A;&#x4EC0;&#x4E48;Reduce&#x7AEF;&#x62FF;&#x5230;&#x7684;&#x662F;&#x4E0A;&#x8FF0;&#x7ED3;&#x679C;&#x5206;&#x7EC4;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x5462;&#xFF1F;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;MapReduce&#x5DF2;&#x7ECF;&#x6307;&#x5B9A;&#x4E86;Map -&gt; Reduce&#x4E2D;&#x95F4;&#x7684;&#x5206;&#x7EC4;&#x548C;&#x6392;&#x5E8F;&#x7684;&#x89C4;&#x5219;&#x3002;&#x8FD9;&#x4E2A;&#x89C4;&#x5219;&#x6211;&#x4EEC;&#x662F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="../04-second-sort/">&#x4E8C;&#x6B21;&#x6392;&#x5E8F;</a>&#x3002;</key,value></p>
+<p>&#x6700;&#x540E;Reducer&#x4F1A;&#x6309;&#x7167;Reduce&#x4E2D;&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x7684;reduce&#x89C4;&#x5219;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x51FA;&#x73B0;&#x7684;&#x4E2A;&#x6570;&#x3002;&#x5373;&#xFF1A;</p>
+<pre><code class="lang-txt">&lt;hadoop,[1,1]&gt;   ===&gt;   &lt;hadoop,2&gt;
+&lt;hive,[1,1]&gt;     ===&gt;   &lt;hive,2&gt;
+&lt;scala,1&gt;        ===&gt;   &lt;scala,1&gt;
+&lt;spark,1&gt;        ===&gt;   &lt;spark,1&gt;
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x6D41;&#x7A0B;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> org.apache.hadoop.conf.Configuration;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IntWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Job;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WcDemo1</span> </span>{
+
+    <span class="hljs-comment">//Map</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MrMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt; </span>{
+        <span class="hljs-keyword">private</span> Text mapOutputKey = <span class="hljs-keyword">new</span> Text();
+        <span class="hljs-keyword">private</span> IntWritable mapOutputValue = <span class="hljs-keyword">new</span> IntWritable(<span class="hljs-number">1</span>);
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-comment">//&#x6BCF;&#x8BFB;&#x53D6;&#x4E00;&#x884C;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;map()</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+            String line = value.toString();
+            String[] strs = line.split(<span class="hljs-string">&quot; &quot;</span>);
+            <span class="hljs-keyword">for</span> (String str : strs) {
+                mapOutputKey.set(str);
+                context.write(mapOutputKey, mapOutputValue);
+            }
+        }
+    }
+
+    <span class="hljs-comment">//Reduce</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MrReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt; </span>{
+        <span class="hljs-keyword">private</span> IntWritable outputV = <span class="hljs-keyword">new</span> IntWritable();
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+            <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (IntWritable v : values) {
+                sum += v.get();
+            }
+            outputV.set(sum);
+            context.write(key, outputV);
+        }
+    }
+
+    <span class="hljs-comment">//Driver</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">run</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
+        <span class="hljs-comment">//&#x521B;&#x5EFA;Job</span>
+        Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+        Job job = Job.getInstance(conf, <span class="hljs-keyword">this</span>.getClass().getSimpleName());
+        job.setJarByClass(<span class="hljs-keyword">this</span>.getClass());
+
+        <span class="hljs-comment">//&#x8BBE;&#x7F6E;Job</span>
+        Path inputPath = <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">0</span>]);
+        FileInputFormat.addInputPath(job, inputPath);
+        Path outputPath = <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">1</span>]);
+        FileOutputFormat.setOutputPath(job, outputPath);
+
+        job.setMapperClass(MrMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        job.setReducerClass(MrReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+
+        <span class="hljs-comment">//&#x63D0;&#x4EA4;Job</span>
+        <span class="hljs-keyword">boolean</span> isSuccess = job.waitForCompletion(<span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">return</span> isSuccess ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException, IOException, ClassNotFoundException </span>{
+        args = <span class="hljs-keyword">new</span> String[] {
+                <span class="hljs-string">&quot;hdfs://n1:8020/Test/input&quot;</span>,
+                <span class="hljs-string">&quot;hdfs://n1:8020/Test/wcDemo1&quot;</span>
+        };
+        <span class="hljs-keyword">int</span> status = <span class="hljs-keyword">new</span> WcDemo1().run(args);
+
+        System.out.println(status+<span class="hljs-string">&quot;--------------------&quot;</span>);
+
+        System.exit(status);
+    }
+}
+</code></pre>
+<p>&#x76F4;&#x63A5;&#x5728;Windows&#x672C;&#x5730;&#x8FD0;&#x884C;&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;HDFS Web UI&#x754C;&#x9762;&#x770B;&#x5230;&#x8FD0;&#x884C;&#x540E;&#x751F;&#x6210;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5C06;Java&#x6587;&#x4EF6;&#x6253;&#x5305;&#x4E3A;jar&#x5305;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FD0;&#x884C;&#xFF0C;&#x906E;&#x63A9;&#x8FC7;&#x7684;&#x65B9;&#x5F0F;&#x663E;&#x7136;&#x4E0D;&#x592A;&#x5408;&#x9002;&#x3002;&#x56E0;&#x4E3A;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x548C;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x7ED9;&#x6B7B;&#x4E86;&#xFF0C;&#x5C5E;&#x4E8E;&#x786C;&#x7F16;&#x7801;&#x3002;&#x4F18;&#x5316;&#x4EE3;&#x7801;&#x89C1;&#xFF1A;</p>
+<ul>
+<li><a href="01-wc-optimization/">&#x4F18;&#x5316;&#x4E00;</a></li>
+</ul>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x4EE5;&#x4E0A;&#x53EA;&#x662F;&#x4EE5;&#x4E24;&#x884C;&#x5F88;&#x5C11;&#x7684;&#x5355;&#x6B21;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x4E3E;&#x4F8B;&#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x8FC7;&#x5927;&#x7684;&#x8BDD;&#xFF0C;&#x5728;Map -&gt; Reduce&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;shuffle&#x8FC7;&#x7A0B;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x91CF;&#x4E5F;&#x4F1A;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x5C31;&#x4F1A;&#x5360;&#x7528;&#x5927;&#x91CF;&#x7684;&#x7F51;&#x7EDC;&#x5E26;&#x5BBD;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7528;Map&#x7AEF;&#x7684;Combine&#xFF08;&#x5408;&#x5E76;&#xFF09;&#x6765;&#x8BA9;Map&#x7AEF;&#x63D0;&#x524D;&#x505A;&#x4E00;&#x70B9;&#x5408;&#x5E76;&#xFF0C;&#x627F;&#x62C5;&#x4E00;&#x70B9;Reduce&#x7AEF;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#x89C1;&#xFF1A;</p>
+<ul>
+<li><a href="02-wc-custom-combine/READ.md">&#x81EA;&#x5B9A;&#x4E49;Map&#x7AEF;Combine&#x89C4;&#x5219;</a></li>
+</ul>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>renwujie</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-01-28 23:09:53 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../02-mr-model/" class="navigation navigation-prev " aria-label="Previous page: 02-mr-model">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="01-wc-optimization/" class="navigation navigation-next " aria-label="Next page: 01-wc-optimization">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"03-wd-count","level":"1.4.3","depth":2,"next":{"title":"01-wc-optimization","level":"1.4.3.1","depth":3,"path":"03-code-demo/03-wd-count/01-wc-optimization/README.md","ref":"./03-code-demo/03-wd-count/01-wc-optimization/README.md","articles":[]},"previous":{"title":"02-mr-model","level":"1.4.2","depth":2,"path":"03-code-demo/02-mr-model/README.md","ref":"./03-code-demo/02-mr-model/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","splitter","alerts","page-footer-ex","hide-element","code","-lunr","-search","search-pro","pageview-count","insert-logo","theme-comscore","anchor-navigation-ex"],"pluginsConfig":{"page-footer-ex":{"copyright":"By <em>renwujie</em>","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"pageview-count":{},"alerts":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://wujieren.github.io/ebook-hadoop-rwj/images/logo.jpg"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03-code-demo/03-wd-count/README.md","mtime":"2021-01-28T15:09:53.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-28T15:10:17.591Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
