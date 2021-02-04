@@ -460,7 +460,236 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>renwujie</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-01-28 14:39:38 </span> </footer>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#mapreduce&#x5B9E;&#x73B0;sql&#x7684;join&#x529F;&#x80FD;"><b>1. </b>MapReduce&#x5B9E;&#x73B0;SQL&#x7684;Join&#x529F;&#x80FD;</a></li><ul><li><span class="title-icon "></span><a href="#&#x9700;&#x6C42;"><b>1.1. </b>&#x9700;&#x6C42;</a></li><li><span class="title-icon "></span><a href="#&#x5B9E;&#x73B0;"><b>1.2. </b>&#x5B9E;&#x73B0;</a></li></ul></ul></div><a href="#mapreduce&#x5B9E;&#x73B0;sql&#x7684;join&#x529F;&#x80FD;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="mapreduce&#x5B9E;&#x73B0;sql&#x7684;join&#x529F;&#x80FD;"><a name="mapreduce&#x5B9E;&#x73B0;sql&#x7684;join&#x529F;&#x80FD;" class="anchor-navigation-ex-anchor" href="#mapreduce&#x5B9E;&#x73B0;sql&#x7684;join&#x529F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>1. MapReduce&#x5B9E;&#x73B0;SQL&#x7684;Join&#x529F;&#x80FD;</h1>
+<h2 id="&#x9700;&#x6C42;"><a name="&#x9700;&#x6C42;" class="anchor-navigation-ex-anchor" href="#&#x9700;&#x6C42;"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. &#x9700;&#x6C42;</h2>
+<p>&#x6848;&#x4F8B;&#x9700;&#x6C42;&#x662F;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;&#x7684;&#xFF1A;&#x73B0;&#x6709;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x662F;customer.csv&#x2014;&#x2014;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x5BA2;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x662F;order.csv&#x2014;&#x2014;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#x3002;&#x5185;&#x5BB9;&#x5206;&#x522B;&#x5982;&#x4E0B;&#xFF08;#&#x540E;&#x9762;&#x7684;&#x662F;&#x6CE8;&#x91CA;&#x5185;&#x5BB9;&#xFF09;&#xFF1A;</p>
+<p>customer.csv</p>
+<pre><code class="lang-txt"># id    name    phone
+1,Stephanie Leung,555-555-5555
+2,Edward Kim,123-456-7890
+3,Jose Madriz,281-330-8004
+4,David Stork,408-555-0000
+</code></pre>
+<p>orders.csv</p>
+<pre><code class="lang-txt"># id    goods    price    date
+3,Apple,12.95,02-Jun-2008
+1,Banana,88.25,20-May-2008
+2,Patato,32,30-Nov-2007
+3,Orange,25.02,22-Jan-2009
+</code></pre>
+<p>&#x8BF7;&#x7528;MapReduce&#x5B9E;&#x73B0;SQL&#x7684;Join&#x529F;&#x80FD;&#xFF0C;&#x6700;&#x7EC8;&#x5F62;&#x6210;&#x4EE5;&#x4E0B;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-txt"># id    name    phone    goods    price    date
+1,Stephanie Leung,555-555-5555,88.25,20-May-2008
+2,Edward Kim,123-456-7890,32.00,30-Nov-2007
+3,Jose Madriz,281-330-8004,25.02,22-Jan-2009
+3,Jose Madriz,281-330-8004,12.95,02-Jun-2008
+</code></pre>
+<h2 id="&#x5B9E;&#x73B0;"><a name="&#x5B9E;&#x73B0;" class="anchor-navigation-ex-anchor" href="#&#x5B9E;&#x73B0;"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. &#x5B9E;&#x73B0;</h2>
+<p>&#x5177;&#x4F53;&#x601D;&#x8DEF;&#xFF1A;&#x5728;Map&#x7AEF;&#xFF0C;&#x5C06;customer&#x548C;order&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x6570;&#x636E;&#x5206;&#x5272;&#x4E3A;<id,data>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x6570;&#x636E;&#x4ECE;Map&#x7AEF;&#x6D41;&#x8F6C;&#x5230;Reduce&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x5F62;&#x6210;&#x4E86;<id,[customer1,order1,order2...]>&#x7684;&#x5F62;&#x5F0F;&#x3002;&#x7136;&#x540E;&#x5728;Reduce&#x7AEF;&#xFF0C;&#x5C06;&#x4FE1;&#x606F;&#x6253;&#x5E73;&#xFF0C;&#x5F62;&#x6210;&#x591A;&#x6761;customer&#x548C;order&#x7684;&#x7EC4;&#x5408;&#x4FE1;&#x606F;&#xFF1A;<id,customer1+order1>&#x3001;<id,customer1+order2>&#xFF0C;&#x5373;&#x53EF;&#x3002;</id,customer1+order2></id,customer1+order1></id,[customer1,order1,order2...]></id,data></p>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x6765;&#x533A;&#x5206;&#x89E3;&#x6790;&#x540E;&#x5F97;&#x6570;&#x636E;&#x662F;&#x5BA2;&#x6237;&#xFF08;customer&#xFF09;&#x4FE1;&#x606F;&#xFF0C;&#x8FD8;&#x662F;&#x8BA2;&#x5355;&#xFF08;order&#xFF09;&#x4FE1;&#x606F;&#x3002;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x9700;&#x8981;&#x5B9E;&#x73B0;Writable&#x63A5;&#x53E3;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> org.apache.hadoop.io.Writable;
+
+<span class="hljs-keyword">import</span> java.io.DataInput;
+<span class="hljs-keyword">import</span> java.io.DataOutput;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.Objects;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataJoinWritable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Writable</span> </span>{
+
+    <span class="hljs-keyword">private</span> String tag;
+    <span class="hljs-keyword">private</span> String data;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DataJoinWritable</span><span class="hljs-params">()</span> </span>{ }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">DataJoinWritable</span><span class="hljs-params">(String tag, String data)</span> </span>{
+        <span class="hljs-keyword">this</span>.set(tag, data);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(String tag, String data)</span> </span>{
+        <span class="hljs-keyword">this</span>.setTag(tag);
+        <span class="hljs-keyword">this</span>.setData(data);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTag</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> tag;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTag</span><span class="hljs-params">(String tag)</span> </span>{
+        <span class="hljs-keyword">this</span>.tag = tag;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getData</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> data;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setData</span><span class="hljs-params">(String data)</span> </span>{
+        <span class="hljs-keyword">this</span>.data = data;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        out.writeUTF(<span class="hljs-keyword">this</span>.getTag());
+        out.writeUTF(<span class="hljs-keyword">this</span>.getData());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        <span class="hljs-keyword">this</span>.setTag(in.readUTF());
+        <span class="hljs-keyword">this</span>.setData(in.readUTF());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == o) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (o == <span class="hljs-keyword">null</span> || getClass() != o.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        DataJoinWritable that = (DataJoinWritable) o;
+        <span class="hljs-keyword">return</span> Objects.equals(tag, that.tag) &amp;&amp;
+                Objects.equals(data, that.data);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> Objects.hash(tag, data);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> tag + <span class="hljs-string">&quot;,&quot;</span> + data;
+    }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x5B9E;&#x73B0;MapRedue&#x4EFB;&#x52A1;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> org.apache.hadoop.conf.Configuration;
+<span class="hljs-keyword">import</span> org.apache.hadoop.conf.Configured;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Job;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+<span class="hljs-keyword">import</span> org.apache.hadoop.util.Tool;
+<span class="hljs-keyword">import</span> org.apache.hadoop.util.ToolRunner;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataJoinMapReduce</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Configured</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Tool</span> </span>{
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataJoinMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">LongWritable</span>, <span class="hljs-title">DataJoinWritable</span>&gt; </span>{
+
+        <span class="hljs-keyword">private</span> LongWritable mKey = <span class="hljs-keyword">new</span> LongWritable();
+        <span class="hljs-keyword">private</span> DataJoinWritable mVal = <span class="hljs-keyword">new</span> DataJoinWritable();
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+            <span class="hljs-keyword">super</span>.setup(context);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text line, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+            <span class="hljs-keyword">if</span>(key.get() == <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">return</span>;
+            }
+            String[] values = line.toString().split(<span class="hljs-string">&quot;,&quot;</span>);
+
+            <span class="hljs-keyword">if</span>(<span class="hljs-number">3</span> != values.length &amp;&amp; <span class="hljs-number">4</span> != values.length) { <span class="hljs-keyword">return</span>; }
+
+            <span class="hljs-keyword">long</span> cid = Long.parseLong(values[<span class="hljs-number">0</span>]);
+
+            <span class="hljs-keyword">if</span>(<span class="hljs-number">3</span> == values.length) {
+                String name = values[<span class="hljs-number">1</span>];
+                String phone = values[<span class="hljs-number">2</span>];
+                mKey.set(cid);
+                mVal.set(<span class="hljs-string">&quot;customer&quot;</span>, name + <span class="hljs-string">&quot;,&quot;</span> + phone);
+<span class="hljs-comment">//                context.write(mKey, mVal);</span>
+            }
+
+            <span class="hljs-keyword">if</span>(<span class="hljs-number">4</span> == values.length) {
+                String goods = values[<span class="hljs-number">1</span>];
+                String price = values[<span class="hljs-number">2</span>];
+                String date = values[<span class="hljs-number">3</span>];
+                mKey.set(cid);
+                mVal.set(<span class="hljs-string">&quot;order&quot;</span>, goods + <span class="hljs-string">&quot;,&quot;</span> + price + <span class="hljs-string">&quot;,&quot;</span> + date);
+<span class="hljs-comment">//                context.write(mKey, mVal);</span>
+            }
+
+            System.out.println(mKey+<span class="hljs-string">&quot;:&quot;</span>+mVal);
+
+            context.write(mKey, mVal);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cleanup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+            <span class="hljs-keyword">super</span>.cleanup(context);
+        }
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataJoinReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">DataJoinWritable</span>, <span class="hljs-title">NullWritable</span>, <span class="hljs-title">Text</span>&gt; </span>{
+        <span class="hljs-keyword">private</span> Text rVal = <span class="hljs-keyword">new</span> Text();
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(LongWritable key, Iterable&lt;DataJoinWritable&gt; values, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+
+            String customerInfo = <span class="hljs-string">&quot;&quot;</span>;
+            List&lt;String&gt; orderList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+            <span class="hljs-keyword">for</span>(DataJoinWritable val : values) {
+                <span class="hljs-keyword">if</span>(val.getTag().equals(<span class="hljs-string">&quot;customer&quot;</span>)) {
+                    customerInfo = val.getData();
+                }
+                <span class="hljs-keyword">if</span>(val.getTag().equals(<span class="hljs-string">&quot;order&quot;</span>)) {
+                    orderList.add(val.getData());
+                }
+            }
+
+            <span class="hljs-keyword">for</span>(String orderInfo : orderList) {
+                rVal.set(key.get() + <span class="hljs-string">&quot;,&quot;</span> + customerInfo + <span class="hljs-string">&quot;,&quot;</span> + orderInfo);
+                context.write(NullWritable.get(), rVal);
+            }
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">run</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Configuration conf = <span class="hljs-keyword">this</span>.getConf();
+        Job job = Job.getInstance(conf, <span class="hljs-keyword">this</span>.getClass().getSimpleName());
+        job.setJarByClass(DataJoinMapReduce.class);
+
+        Path inputPath = <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">0</span>]);
+        FileInputFormat.addInputPath(job, inputPath);
+        Path outPath = <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">1</span>]);
+        FileOutputFormat.setOutputPath(job, outPath);
+
+        job.setMapperClass(DataJoinMapper.class);
+        job.setMapOutputKeyClass(LongWritable.class);
+        job.setMapOutputValueClass(DataJoinWritable.class);
+
+        job.setReducerClass(DataJoinReducer.class);
+        job.setOutputKeyClass(NullWritable.class);
+        job.setOutputValueClass(Text.class);
+
+        <span class="hljs-keyword">boolean</span> status = job.waitForCompletion(<span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">return</span> status ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+        args = <span class="hljs-keyword">new</span> String[] {
+<span class="hljs-comment">//                &quot;hdfs://n3.com.rwj:8020/test/join/input&quot; , &quot;hdfs://n3.com.rwj:8020/test/join/output1&quot;</span>
+                <span class="hljs-string">&quot;data/join/input&quot;</span>,
+                <span class="hljs-string">&quot;data/join/output&quot;</span>
+        };
+        <span class="hljs-keyword">int</span> isSuccess = ToolRunner.run(conf, <span class="hljs-keyword">new</span> DataJoinMapReduce(), args);
+        System.exit(isSuccess);
+    }
+}
+</code></pre>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>renwujie</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-02-04 21:16:54 </span> </footer>
                                 
                                 </section>
                             
@@ -503,7 +732,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"05-join","level":"1.4.5","depth":2,"next":{"title":"06-custom-counter","level":"1.4.6","depth":2,"path":"03-code-demo/06-custom-counter/README.md","ref":"./03-code-demo/06-custom-counter/README.md","articles":[]},"previous":{"title":"03-demo3","level":"1.4.4.3","depth":3,"path":"03-code-demo/04-second-sort/03-demo3/README.md","ref":"./03-code-demo/04-second-sort/03-demo3/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","splitter","alerts","page-footer-ex","hide-element","code","-lunr","-search","search-pro","pageview-count","insert-logo","theme-comscore","anchor-navigation-ex"],"pluginsConfig":{"page-footer-ex":{"copyright":"By <em>renwujie</em>","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"pageview-count":{},"alerts":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://wujieren.github.io/ebook-hadoop-rwj/images/logo.jpg"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03-code-demo/05-join/README.md","mtime":"2021-01-28T06:39:38.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-28T15:15:45.654Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"05-join","level":"1.4.5","depth":2,"next":{"title":"06-custom-counter","level":"1.4.6","depth":2,"path":"03-code-demo/06-custom-counter/README.md","ref":"./03-code-demo/06-custom-counter/README.md","articles":[]},"previous":{"title":"03-demo3","level":"1.4.4.3","depth":3,"path":"03-code-demo/04-second-sort/03-demo3/README.md","ref":"./03-code-demo/04-second-sort/03-demo3/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","splitter","alerts","page-footer-ex","hide-element","code","-lunr","-search","search-pro","pageview-count","insert-logo","theme-comscore","anchor-navigation-ex","livereload"],"pluginsConfig":{"livereload":{},"page-footer-ex":{"copyright":"By <em>renwujie</em>","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"pageview-count":{},"alerts":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://wujieren.github.io/ebook-hadoop-rwj/images/logo.jpg"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03-code-demo/05-join/README.md","mtime":"2021-02-04T13:16:54.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-04T13:22:16.515Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -546,6 +775,10 @@
     
         
         <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
