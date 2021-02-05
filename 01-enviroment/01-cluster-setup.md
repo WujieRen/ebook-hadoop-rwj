@@ -11,7 +11,7 @@
 
 ## Installation
 
-点击[下载]()相应版本，本文档采用2.7.7。安装Hadoop集群需要解压所软件在所有的节点上，所以将硬件的功能进行划分很重要。
+点击[下载](https://archive.apache.org/dist/hadoop/common/)相应版本，本文档采用2.7.7。安装Hadoop集群需要解压所软件在所有的节点上，所以将硬件的功能进行划分很重要。
 
 <h2 id="cp">Component Planning</h2>
 

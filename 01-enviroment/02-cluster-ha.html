@@ -460,8 +460,181 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><b>1. </b>&#x90E8;&#x7F72;Hadoop HA&#x96C6;&#x7FA4;</a></li></ul></div><a href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><a name="&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;" class="anchor-navigation-ex-anchor" href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x90E8;&#x7F72;Hadoop HA&#x96C6;&#x7FA4;</h1>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>renwujie</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-01-27 23:37:11 </span> </footer>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><b>1. </b>&#x90E8;&#x7F72;Hadoop HA&#x96C6;&#x7FA4;</a></li><ul><li><span class="title-icon "></span><a href="#purpose"><b>1.1. </b>Purpose</a></li><li><span class="title-icon "></span><a href="#prerequisites"><b>1.2. </b>Prerequisites</a></li><li><span class="title-icon "></span><a href="#component-planning"><b>1.3. </b>Component Planning</a></li><li><span class="title-icon "></span><a href="#configure-ha-hadoop-cluster"><b>1.4. </b>Configure HA Hadoop Cluster</a></li><ul><li><span class="title-icon "></span><a href="#&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><b>1.4.1. </b>&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a></li><li><span class="title-icon "></span><a href="#&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><b>1.4.2. </b>&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a></li></ul><li><span class="title-icon "></span><a href="#&#x540C;&#x6B65;namenode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E;--&#x542F;&#x52A8;ha-hadoop&#x96C6;&#x7FA4;"><b>1.5. </b>&#x540C;&#x6B65;NameNode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E; &amp; &#x542F;&#x52A8;HA Hadoop&#x96C6;&#x7FA4;</a></li></ul></ul></div><a href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><a name="&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;" class="anchor-navigation-ex-anchor" href="#&#x90E8;&#x7F72;hadoop-ha&#x96C6;&#x7FA4;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x90E8;&#x7F72;Hadoop HA&#x96C6;&#x7FA4;</h1>
+<h2 id="purpose"><a name="purpose" class="anchor-navigation-ex-anchor" href="#purpose"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. Purpose</h2>
+<p>&#x672C;&#x8282;&#x63CF;&#x8FF0;&#x5982;&#x4F55;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;&#x9AD8;&#x53EF;&#x7528;&#x7684;&#x5B8C;&#x5168;&#x5206;&#x5E03;&#x5F0F;Hadoop&#x96C6;&#x7FA4;&#xFF0C;&#x4EE5;3&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E3E;&#x4F8B;&#x3002;</p>
+<h2 id="prerequisites"><a name="prerequisites" class="anchor-navigation-ex-anchor" href="#prerequisites"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. Prerequisites</h2>
+<ol>
+<li>&#x5DF2;&#x7ECF;&#x642D;&#x5EFA;&#x597D;&#x4E86;&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x5206;&#x5E03;&#x5F0F;&#x7684;Hadoop&#x96C6;&#x7FA4;&#x3002;&#x53C2;&#x8003;<a href="01-cluster-setup.html">&#x4E0A;&#x8282;</a>&#x3002;</li>
+<li>&#x5728;&#x4EE5;&#x4E0A;Hadoop&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x4E0A;&#x5B89;&#x88C5;Zookeeper&#xFF0C;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x5206;&#x5E03;&#x5F0F;&#x7684;Zookeeper&#x96C6;&#x7FA4;&#x3002;&#x53EF;&#x53C2;&#x8003;&#xFF1A;~~~</li>
+</ol>
+<h2 id="component-planning"><a name="component-planning" class="anchor-navigation-ex-anchor" href="#component-planning"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. Component Planning</h2>
+<p>&#x5728;<a href="01-cluster-setup.html">&#x4E0A;&#x8282;</a>&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x642D;&#x5EFA;HA Hadoop&#x96C6;&#x7FA4;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x6709;NameNode&#x3002;&#x8FD9;&#x65F6;&#x8981;&#x7528;&#x5230;Zookeeper&#x3002;&#x673A;&#x5668;&#x89C4;&#x5212;&#x66F4;&#x65B0;&#x5982;&#x4E0B;&#xFF08;&#x52A0;&#x7C97;&#x7684;&#x662F;&#x589E;&#x52A0;&#x7684;&#x7684;&#xFF09;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n1</th>
+<th style="text-align:center">n2</th>
+<th style="text-align:center">n3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">NameNode/DataNode</td>
+<td style="text-align:center">DataNode</td>
+<td style="text-align:center"><strong>NameNode</strong>/DataNode</td>
+</tr>
+<tr>
+<td style="text-align:center">NodeManager</td>
+<td style="text-align:center">NodeManager</td>
+<td style="text-align:center">ResourceManager/NodeManager</td>
+</tr>
+<tr>
+<td style="text-align:center">SecondaryNameNode</td>
+<td style="text-align:center">HistoryServer</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Zookeeper</strong></td>
+<td style="text-align:center"><strong>Zookeeper</strong></td>
+<td style="text-align:center"><strong>Zookeeper</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="configure-ha-hadoop-cluster"><a name="configure-ha-hadoop-cluster" class="anchor-navigation-ex-anchor" href="#configure-ha-hadoop-cluster"><i class="fa fa-link" aria-hidden="true"></i></a>1.4. Configure HA Hadoop Cluster</h2>
+<p>&#x4E3B;&#x8981;&#x4FEE;&#x6539;hdfs-site.xml&#x548C;core-site.xml&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x521A;&#x642D;&#x5EFA;&#x597D;&#x7684;Hadoop&#x5206;&#x5E03;&#x5F0F;&#x96C6;&#x7FA4;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x8FD0;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDB;&#x884C;HA&#x7684;&#x914D;&#x7F6E;&#x3002;&#x5982;&#x679C;&#x662F;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x4E86;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x5EFA;&#x8BAE;&#x5907;&#x4EFD;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x642D;&#x5EFA;&#x524D;&#x8BF7;&#x5173;&#x95ED;&#x6240;&#x6709;Hadoop&#x8FDB;&#x7A0B;&#x548C;Zookeeper&#x8FDB;&#x7A0B;&#x3002;</p>
+<h3 id="&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a name="&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.1. &#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<h4 id="hdfs-sitexml"><a name="hdfs-sitexml" class="anchor-navigation-ex-anchor" href="#hdfs-sitexml"><i class="fa fa-link" aria-hidden="true"></i></a>hdfs-site.xml</h4>
+<p>&#x5220;&#x9664;SecondaryNameNode&#x7684;&#x914D;&#x7F6E;&#x2014;&#x2014;&#x6216;&#x8005;&#x4E00;&#x5F00;&#x59CB;&#x914D;&#x7F6E;Hadoop&#x96C6;&#x7FA4;&#x662F;&#x4E0D;&#x914D;&#x7F6E;&#x4E5F;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x7ED9;NameNode&#x7BA1;&#x7406;&#x7684;&#x5143;&#x6570;&#x636E;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x540D;&#x79F0;:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.nameservices<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>ns<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x4E24;&#x4E2A;NameNode&#x7684;&#x903B;&#x8F91;&#x540D;&#x79F0;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.namenodes.ns<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>nn1,nn2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x4E24;&#x4E2A;NameNode&#x5B9E;&#x4F8B;&#x7684;RPC&#x5185;&#x90E8;&#x901A;&#x4FE1;&#x5730;&#x5740;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.ns.nn1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>n1:8020<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.ns.nn2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>n3:8020<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x4E24;&#x4E2A;NameNode&#x5B9E;&#x4F8B;&#x7684;Http&#x5730;&#x5740;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.ns.nn1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>n1:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.ns.nn2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>n3:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;JournalNode&#x65E5;&#x76F4;&#x63A5;&#x70B9;&#x7684;URI&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>qjournal://n1:8485;n2:8485;n3:8485/ns<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;NournalNode&#x672C;&#x5730;&#x5B58;&#x50A8;&#x65E5;&#x5FD7;&#x7684;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.journalnode.edits.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/opt/app/hadoop-2.7.7/data/dfs/jn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x4EE3;&#x7406;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.client.failover.proxy.provider.mycluster<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x9694;&#x79BB;&#x65B9;&#x6848;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.fencing.methods<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>sshfence<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.fencing.ssh.private-key-files<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/renwujie/.ssh/id_rsa<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x5F00;&#x542F;&#x81EA;&#x52A8;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<h4 id="core-sitexml"><a name="core-sitexml" class="anchor-navigation-ex-anchor" href="#core-sitexml"><i class="fa fa-link" aria-hidden="true"></i></a>core-site.xml</h4>
+<p>&#x6307;&#x5B9A;Zookeeper&#x7684;&#x5B9E;&#x4F8B;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>ha.zookeeper.quorum<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>n1:2181,n2:2181,n3:2181<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.defaultFS<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://ns<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+</code></pre>
+<h3 id="&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a name="&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>1.4.2. &#x5206;&#x53D1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<p>&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x5C06;&#x914D;&#x7F6E;&#x597D;&#x7684;Hadoop&#x6587;&#x4EF6;&#x53D1;&#x9001;&#x5230;&#x6240;&#x6709;&#x8282;&#x70B9;&#x4E0A;&#x3002;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x4E86;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x53EA;&#x8981;&#x53D1;&#x9001;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x540C;&#x6B65;namenode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E;--&#x542F;&#x52A8;ha-hadoop&#x96C6;&#x7FA4;"><a name="&#x540C;&#x6B65;namenode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E;--&#x542F;&#x52A8;ha-hadoop&#x96C6;&#x7FA4;" class="anchor-navigation-ex-anchor" href="#&#x540C;&#x6B65;namenode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E;--&#x542F;&#x52A8;ha-hadoop&#x96C6;&#x7FA4;"><i class="fa fa-link" aria-hidden="true"></i></a>1.5. &#x540C;&#x6B65;NameNode&#x8282;&#x70B9;&#x5143;&#x6570;&#x636E; &amp; &#x542F;&#x52A8;HA Hadoop&#x96C6;&#x7FA4;</h2>
+<p>&#x540C;&#x6B65;NameNode&#x8282;&#x70B9;&#x7684;&#x5143;&#x6570;&#x636E;&#x8981;&#x4E25;&#x683C;&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x987A;&#x5E8F;&#x64CD;&#x4F5C;&#x3002;</p>
+<ol>
+<li><p>&#x542F;&#x52A8;&#x6240;&#x6709;&#x8282;&#x70B9;&#x7684;Zookeeper&#xFF1B;</p>
+<pre><code class="lang-shell">zkServer.sh start
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;&#x6240;&#x6709;&#x7684;JournalNode&#xFF1B;</p>
+<pre><code class="lang-shell">$HADOOP_HOME/sbin/hadoop-daemon.sh start journalnode
+</code></pre>
+</li>
+<li><p>&#x540C;&#x6B65;&#x5143;&#x6570;&#x636E;&#xFF1B;</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x96C6;&#x7FA4;&#xFF1A;&#x683C;&#x5F0F;&#x5316;&#xFF08;&#x53EA;&#x9700;&#x8981;&#x683C;&#x5F0F;&#x5316;&#x4E00;&#x53F0;NameNode&#x5373;&#x53EF;&#xFF09;&#x3002;&#x5426;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x683C;&#x5F0F;&#x5316;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x4E5F;&#x7ED9;&#x65B0;&#x96C6;&#x7FA4;&#xFF1A;&#x5C06;&#x539F;&#x5148;&#x7684;NameNode&#x4E0B;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF08;hadoop.tmp.dir&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6570;&#x636E; &#x548C; dfs.namenode.dir&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6570;&#x636E;&#xFF09;copy&#x5230;&#x65B0;&#x7684;NameNode&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x4F4D;&#x7F6E;&#x540C;&#x539F;&#x5148;&#x7684;NameNode&#x4E0A;&#x7684;&#x8DEF;&#x5F84;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x914D;&#x7F6E;dfs.namenode.dir&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x8BE5;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x5FC5;copy&#x3002;</p>
+</li>
+<li><p>&#x7136;&#x540E;&#x5728;&#x65E7;&#x7684;NamoNode&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x521D;&#x59CB;&#x5316;JournalNode&#xFF08;&#x6CE8;&#x610F;&#x521D;&#x59CB;&#x5316;JournalNode&#x524D;&#x8981;&#x5148;&#x542F;&#x52A8;&#x6240;&#x6709;&#x7684;JournalNode&#xFF09;&#x3002;&#x521D;&#x59CB;&#x5316;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-shell">$HADOOP_HOME/bin/hdfs namenode -initializeSharedEdits
+</code></pre>
+</li>
+<li><p>&#x4E4B;&#x540E;&#xFF0C;&#x542F;&#x52A8;NameNode&#x3002;</p>
+</li>
+<li><p>&#x7136;&#x540E;&#x5230;&#x53E6;&#x4E00;&#x53F0;NameNode&#x8282;&#x70B9;&#x4E0A;&#x540C;&#x6B65;JournalNode&#x3002;&#x540C;&#x6B65;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-shell">$HADOOP_HOME/bin/hdfs namenode -bootstrapStandby
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>&#x5143;&#x6570;&#x636E;&#x540C;&#x6B65;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5148;&#x6682;&#x505C;&#x6389;&#x4E24;&#x53F0;NameNode&#xFF0C;&#x5373;&#x5173;&#x95ED;&#x6240;&#x6709;NameNode&#x8FDB;&#x7A0B;&#x3002;&#x7136;&#x540E;&#x521D;&#x59CB;&#x5316;ZKFC&#x3002;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-shell">$HADOOP_HOME/bin/hdfs zkfc -formatZK
+</code></pre>
+<p>&#x521D;&#x59CB;&#x5316;ZKFC&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8FDB;&#x5165;zk&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x751F;&#x6210;&#x4E86;&#x540D;&#x4E3A;hadoop-ha&#x7684;&#x8282;&#x70B9;&#x76EE;&#x5F55;&#xFF1A;</p>
+<pre><code class="lang-shell">zkCli.sh start
+ls /
+</code></pre>
+</li>
+<li><p>&#x5728;&#x4E24;&#x53F0;NameNode&#x6240;&#x5728;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x5206;&#x522B;&#x542F;&#x52A8;zkfc&#x76D1;&#x542C;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-shell">$HADOOP_HOME/sbin/hadoop-daemon.sh start zkfc
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;HDFS&#x548C;YARN&#x670D;&#x52A1;&#x3002;</p>
+</li>
+</ol>
+<p>&#x540E;&#x7EED;&#x5173;&#x95ED;&#x96C6;&#x7FA4;&#x5728;&#x5176;&#x542F;&#x52A8;&#x65F6;&#x4E5F;&#x4E25;&#x683C;&#x6309;&#x7167;&#xFF1A;zk -&gt; JournalNode -&gt; ZKFC -&gt; HDFS -&gt; YARN &#x7684;&#x987A;&#x5E8F;&#x542F;&#x52A8;&#x5373;&#x53EF;&#x3002;&#x521D;&#x6B21;&#x542F;&#x52A8;&#x9700;&#x8981;&#x6309;&#x7167;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#x540C;&#x6B65;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x540E;&#x7EED;&#x542F;&#x52A8;HA&#x96C6;&#x7FA4;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x5143;&#x6570;&#x636E;&#x540C;&#x6B65;&#x76D1;&#x542C;&#xFF0C;&#x53EA;&#x8981;&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;&#x76F8;&#x5E94;&#x7EC4;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>renwujie</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2021-02-06 01:39:12 </span> </footer>
                                 
                                 </section>
                             
@@ -504,7 +677,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"02-cluster-ha.md","level":"1.2.2","depth":2,"next":{"title":"02-basic-operate","level":"1.3","depth":1,"path":"02-basic-operate/README.md","ref":"./02-basic-operate/README.md","articles":[]},"previous":{"title":"01-cluster-setup.md","level":"1.2.1","depth":2,"path":"01-enviroment/01-cluster-setup.md","ref":"./01-enviroment/01-cluster-setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","splitter","alerts","page-footer-ex","hide-element","code","-lunr","-search","search-pro","pageview-count","insert-logo","theme-comscore","anchor-navigation-ex","livereload"],"pluginsConfig":{"livereload":{},"page-footer-ex":{"copyright":"By <em>renwujie</em>","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"pageview-count":{},"alerts":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://wujieren.github.io/ebook-hadoop-rwj/images/logo.jpg"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01-enviroment/02-cluster-ha.md","mtime":"2021-01-27T15:37:11.441Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-04T13:22:16.515Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"02-cluster-ha.md","level":"1.2.2","depth":2,"next":{"title":"02-basic-operate","level":"1.3","depth":1,"path":"02-basic-operate/README.md","ref":"./02-basic-operate/README.md","articles":[]},"previous":{"title":"01-cluster-setup.md","level":"1.2.1","depth":2,"path":"01-enviroment/01-cluster-setup.md","ref":"./01-enviroment/01-cluster-setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","splitter","alerts","page-footer-ex","hide-element","code","-lunr","-search","search-pro","pageview-count","insert-logo","theme-comscore","anchor-navigation-ex"],"pluginsConfig":{"page-footer-ex":{"copyright":"By <em>renwujie</em>","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"theme-comscore":{},"pageview-count":{},"alerts":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://wujieren.github.io/ebook-hadoop-rwj/images/logo.jpg"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01-enviroment/02-cluster-ha.md","mtime":"2021-02-05T17:39:12.183Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-05T17:40:07.439Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -547,10 +720,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
