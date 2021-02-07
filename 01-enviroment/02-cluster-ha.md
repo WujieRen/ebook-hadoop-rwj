@@ -78,7 +78,7 @@
 </property>
 ```
 
-指定JournalNode日直接点的URI：
+指定JournalNode日志节点的URI：
 
 ```xml
 <property>
@@ -92,7 +92,7 @@
 ```xml
 <property>
     <name>dfs.journalnode.edits.dir</name>
-    <value>/opt/app/hadoop-2.7.7/data/dfs/jn</value>
+    <value>/opt/cluster/hadoop-2.7.7/data/jn</value>
 </property>
 ```
 
@@ -114,7 +114,7 @@
 </property>
 <property>
     <name>dfs.ha.fencing.ssh.private-key-files</name>
-    <value>/home/renwujie/.ssh/id_rsa</value>
+    <value>/home/root/.ssh/id_rsa</value>
 </property>
 ```
 
@@ -138,7 +138,7 @@
  </property>
 ```
 
-指定命名空间：
+指定（修改）命名空间：
 
 ```xml
 <property>
@@ -171,9 +171,7 @@
 
    - 如果是一个新集群：格式化（只需要格式化一台NameNode即可）。否则不需要格式化。
 
-   - 如果不是也给新集群：将原先的NameNode下的元数据（hadoop.tmp.dir参数对应的目录下的数据 和 dfs.namenode.dir参数对应的目录下的数据）copy到新的NameNode节点上，位置同原先的NameNode上的路径保持一致。如果没有配置dfs.namenode.dir可以忽略该参数对应目录文件，不必copy。
-
-   - 然后在旧的NamoNode节点上，初始化JournalNode（注意初始化JournalNode前要先启动所有的JournalNode）。初始化命令如下：
+   - 如果不是一个新集群，就直接在旧的NamoNode节点上，初始化JournalNode（注意初始化JournalNode前要先启动所有的JournalNode）。初始化命令如下：
 
      ```shell
      $HADOOP_HOME/bin/hdfs namenode -initializeSharedEdits
@@ -186,8 +184,12 @@
      ```shell
      $HADOOP_HOME/bin/hdfs namenode -bootstrapStandby
      ```
+     
+   - 这时候如果把第二台NameNode也启动，那么在WebUI就能看到两个NameNode节点都处于StandBy的状态。
 
-4. 元数据同步完成后，先暂停掉两台NameNode，即关闭所有NameNode进程。然后初始化ZKFC。命令如下：
+     ![节点处于StandBy状态](../images/01/02.jpg)
+
+4. 元数据同步完成后，先关闭所有NameNode进程。然后在任意NameNode所在节点上初始化ZKFC。命令如下：
 
    ```shell
    $HADOOP_HOME/bin/hdfs zkfc -formatZK
@@ -200,12 +202,32 @@
    ls /
    ```
 
+   ![](../images/01/03.jpg)
+
 5. 在两台NameNode所在的节点上分别启动zkfc监听器：
 
    ```shell
    $HADOOP_HOME/sbin/hadoop-daemon.sh start zkfc
    ```
 
+   进程对应的名称为：DFSZKFailoverController。可用jps查看是否启动成功。
+
+   ![](../images/01/04.jpg)
+
+   
+
 6. 启动HDFS和YARN服务。
 
-后续关闭集群在其启动时也严格按照：zk -> JournalNode -> ZKFC -> HDFS -> YARN 的顺序启动即可。初次启动需要按照以上步骤同步元数据，后续启动HA集群就会自动进行元数据同步监听，只要按顺序启动相应组件即可。
+   这时在启动两个NameNode后就会发现一个NameNode状态为active，另一个为standby。
+
+   ![](../images/01/05.jpg)
+
+初次启动HA需要按照以上步骤同步元数据。后续启动HA集群，集群就会自动进行元数据同步监听和故障容错，只要按顺序启动相应组件即可。
+
+## 补充
+
+后续重新启动集群时也严格按照：ZK -> JournalNode -> ZKFC -> HDFS -> YARN 的顺序启动。
+
+关闭顺序建议：YARN -> HDFS -> ZKFC -> JournalNode -> ZK。
+
+如果手动启动麻烦，只需要调整start-dfs.sh中NameNodes、DataNodes、JournalNode和ZKFC启动的顺序即可调用start-dfs.sh和start-yarn.sh启动。更进一步，可以自己写一个shell脚本，一个脚本按顺序启动、关闭所有进程。
